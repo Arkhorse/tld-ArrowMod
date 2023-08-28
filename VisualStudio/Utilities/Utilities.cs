@@ -27,7 +27,7 @@ namespace ArrowMod
                 return null;
             }
             uint eventId = AkSoundEngine.GetIDFromString(eventName);
-            if (eventId <= 0 || eventId >= 4294967295)
+            if (eventId <= uint.MinValue || eventId >= uint.MaxValue)
             {
                 return null;
             }
