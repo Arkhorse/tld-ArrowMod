@@ -1,14 +1,19 @@
-﻿using MelonLoader;
-using System.Reflection;
+﻿using BuildInfo = ArrowMod.BuildInfo;
 
-//This is a C# comment. Comments have no impact on compilation.
+[assembly: AssemblyTitle(BuildInfo.Name)]
+[assembly: AssemblyDescription(BuildInfo.Description)]
+[assembly: AssemblyCompany(BuildInfo.Company)]
+[assembly: AssemblyProduct(BuildInfo.Product)]
+[assembly: AssemblyCopyright(BuildInfo.Copyright)]
+[assembly: AssemblyTrademark(BuildInfo.Trademark)]
+[assembly: AssemblyCulture(BuildInfo.Culture)]
 
-[assembly: AssemblyTitle(ArrowMod.BuildInfo.ModName)]
-[assembly: AssemblyCopyright($"Created by {ArrowMod.BuildInfo.ModAuthor}")]
+[assembly: AssemblyVersion(BuildInfo.Version)]
+[assembly: AssemblyFileVersion(BuildInfo.Version)]
 
-[assembly: AssemblyVersion(ArrowMod.BuildInfo.ModVersion)]
-[assembly: AssemblyFileVersion(ArrowMod.BuildInfo.ModVersion)]
-[assembly: MelonInfo(typeof(ArrowMod.ArrowMod), ArrowMod.BuildInfo.ModName, ArrowMod.BuildInfo.ModVersion, ArrowMod.BuildInfo.ModAuthor)]
-
-//This tells MelonLoader that the mod is only for The Long Dark.
+[assembly: MelonInfo(typeof(ArrowMod.Main), BuildInfo.GUIName, BuildInfo.Version, BuildInfo.Author, BuildInfo.DownloadLink)]
 [assembly: MelonGame("Hinterland", "TheLongDark")]
+
+[assembly: VerifyLoaderVersion(BuildInfo.MelonLoaderVersion, true)]
+[assembly: MelonPriority(BuildInfo.Priority)]
+[assembly: MelonIncompatibleAssemblies(BuildInfo.IncompatibleMods)]
