@@ -1,12 +1,10 @@
-using ModSettings;
-
 namespace ArrowMod
 {
-	
-	internal class ArrowModSettings : JsonModSettings
+	public class Settings : JsonModSettings
 	{
+        internal static Settings Instance { get; } = new();
+
         [Section("Arrow Mod Settings")]
-        
 
         [Name("Arrowhead craft time")]
 		[Description("Minutes to craft 2 arrowheads. Default is 60, recommended is 20-40")]
@@ -45,17 +43,10 @@ namespace ArrowMod
 		[Slider(0, 20)]
 		public int craftFletchingFromBarkTime = 5;
 
-        
-
-
+        public static void OnLoad()
+        {
+            Instance.AddToModSettings(BuildInfo.GUIName);
+			Instance.RefreshGUI();
+        }
     }
-	internal static class Settings
-	{
-		public static ArrowModSettings options;
-		public static void OnLoad()
-		{
-			options = new ArrowModSettings();
-			options.AddToModSettings("Arrow Mod Settings");
-		}
-	}
 }
